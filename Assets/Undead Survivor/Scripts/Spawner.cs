@@ -13,7 +13,8 @@ public class Spawner : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        level = (int)(GameManager.instance.gameTime / 10f); 
+        level = Mathf.Min((int)(GameManager.instance.gameTime / 10f), spawnData.Length - 1);
+
 
         if (timer > spawnData[level].spawnTime)
         {

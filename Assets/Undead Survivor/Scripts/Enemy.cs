@@ -58,8 +58,33 @@ public class Enemy : MonoBehaviour
         anim.runtimeAnimatorController = animCon[spawnData.spriteType];
         speed = spawnData.speed;
         maxHealth = spawnData.health;
-        health = maxHealth;
+        health = spawnData.health;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("Bullet"))
+            return;
+
+        health -= collision.GetComponent<Bullet>().damage;
+
+        if(health>0)
+        {
+        }
+        else
+        {
+            Dead();
+        }
+
+
+    }
+
+    void Dead()
+    {
+       gameObject.SetActive(false);
+    }
+
+
 }
 
 

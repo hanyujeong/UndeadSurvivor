@@ -647,6 +647,7 @@ Transform:
   - {fileID: 337191422}
   - {fileID: 1036165764}
   - {fileID: 1217131075}
+  - {fileID: 1299371103}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &373387113
@@ -808,6 +809,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Pool
   prefabs:
   - {fileID: 5283640687217760625, guid: a60008b781bca9d4da61b9fe3dc010b2, type: 3}
+  - {fileID: 7827888347344473652, guid: 1a864ddd6c8e05c439f60f63c9c48a66, type: 3}
 --- !u!4 &500652235
 Transform:
   m_ObjectHideFlags: 0
@@ -817,7 +819,7 @@ Transform:
   m_GameObject: {fileID: 500652233}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.17346, y: 2.05349, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10194,12 +10196,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
   spawnPoint: []
   spawnData:
-  - spriteType: 0
-    spawnTime: 0.7
+  - spawnTime: 0.7
+    spriteType: 0
     health: 10
     speed: 1.5
-  - spriteType: 1
-    spawnTime: 0.2
+  - spawnTime: 0.2
+    spriteType: 1
     health: 10
     speed: 2.4
 --- !u!1 &1240046528
@@ -14568,6 +14570,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e292bb00de97c04889007f4eecea7b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Reposition
+--- !u!1 &1299371102
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1299371103}
+  - component: {fileID: 1299371104}
+  m_Layer: 0
+  m_Name: Weapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1299371103
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299371102}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 373387112}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1299371104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299371102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06ae39cb91cdbe142a35ccf76d50260f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Weapon
+  id: 0
+  prefabId: 1
+  damage: 11
+  count: 1
+  speed: 0
 --- !u!1 &1326706267
 GameObject:
   m_ObjectHideFlags: 0
