@@ -21,7 +21,7 @@ public abstract class PoolingSystem<T> : Singleton<T> where T : PoolingSystem<T>
     {
         foreach (IPoolDictionary poolDictionary in PoolCategories.Values)
         {
-            poolDictionary.Initialize(transform);
+            poolDictionary.Initialize();
         }
     }
 
@@ -44,12 +44,13 @@ public abstract class PoolingSystem<T> : Singleton<T> where T : PoolingSystem<T>
     /// </summary>
     /// <typeparam name="TComponent">Type of the component being pooled.</typeparam>
     /// <param name="key">The key identifying the component prefab.</param>
+    /// <param name="parent"> The parent Transform to assign the new instance under.</param>
     /// <returns>The pooled component instance.</returns>
-    public TComponent Dequeue<TComponent>(string key) where TComponent : Component
+    public TComponent Dequeue<TComponent>(string key, Transform parent = null) where TComponent : Component
     {
         if (PoolCategories.TryGetValue(typeof(TComponent), out IPoolDictionary poolDictionary))
         {
-            TComponent component = poolDictionary.Dequeue(key) as TComponent;
+            TComponent component = poolDictionary.Dequeue(key, parent) as TComponent;
             if (component) component.gameObject.SetActive(true);
             
             return component;
@@ -63,12 +64,13 @@ public abstract class PoolingSystem<T> : Singleton<T> where T : PoolingSystem<T>
     /// </summary>
     /// <typeparam name="TComponent">Type of the component being pooled.</typeparam>
     /// <param name="index">The index identifying the component prefab.</param>
+    /// <param name="parent"> The parent Transform to assign the new instance under.</param>
     /// <returns>The pooled component instance.</returns>
-    public TComponent Dequeue<TComponent>(int index) where TComponent : Component
+    public TComponent Dequeue<TComponent>(int index, Transform parent = null) where TComponent : Component
     {
         if (PoolCategories.TryGetValue(typeof(TComponent), out IPoolDictionary poolDictionary))
         {
-            TComponent component = poolDictionary.Dequeue(index) as TComponent;
+            TComponent component = poolDictionary.Dequeue(index, parent) as TComponent;
             if (component) component.gameObject.SetActive(true);
             
             return component;
@@ -83,10 +85,10 @@ public abstract class PoolingSystem<T> : Singleton<T> where T : PoolingSystem<T>
     /// </summary>
     protected interface IPoolDictionary
     {
-        public Component Dequeue(string key);
-        public Component Dequeue(int index);
+        public Component Dequeue(string key, Transform parent = null);
+        public Component Dequeue(int index, Transform parent = null);
         public void Enqueue(Component component);
-        public void Initialize(Transform parent);
+        public void Initialize();
     }
 
     /// <summary>
@@ -96,6 +98,11 @@ public abstract class PoolingSystem<T> : Singleton<T> where T : PoolingSystem<T>
     [Serializable]
     protected class PoolDictionary<TComponent> : IPoolDictionary where TComponent : Component
     {
+        /// <summary>
+        /// Default parent Transform for pooled objects.
+        /// </summary>
+        [SerializeField] public Transform defaultPoolParent;
+        
         /// <summary>
         /// Dictionary mapping keys to component info (prefab, pool, init count).
         /// </summary>
@@ -116,7 +123,7 @@ public abstract class PoolingSystem<T> : Singleton<T> where T : PoolingSystem<T>
         /// <summary>
         /// Initialize the pool by creating the initial set of components.
         /// </summary>
-        public void Initialize(Transform parent)
+        public void Initialize()
         {
             SerializeDictionary<string, PoolConfig<TComponent>>.DataType[] data = poolConfigs.GetDataType();
             for (int i = 0; i < data.Length; ++i)
@@ -129,7 +136,7 @@ public abstract class PoolingSystem<T> : Singleton<T> where T : PoolingSystem<T>
 
                 for (int j = 0; j < info.initCreateCount; ++j)
                 {
-                    Enqueue(CreateComponent(info.componentPrefab, key, parent));
+                    Enqueue(CreateComponent(info.componentPrefab, key, defaultPoolParent));
                 }
             }
         }
@@ -153,7 +160,7 @@ public abstract class PoolingSystem<T> : Singleton<T> where T : PoolingSystem<T>
         {
             if (poolConfigs.TryGetValue(component.name, out PoolConfig<TComponent> componentInfo))
             {
-                component.transform.SetParent(Instance.transform, true);
+                component.transform.SetParent(defaultPoolParent, true);
                 componentInfo.pool.Enqueue(component as TComponent);
             }
         }
@@ -162,13 +169,13 @@ public abstract class PoolingSystem<T> : Singleton<T> where T : PoolingSystem<T>
         /// Dequeue a component from the pool by key.
         /// Creates a new one if the pool is empty.
         /// </summary>
-        public Component Dequeue(string key)
+        public Component Dequeue(string key, Transform parent = null)
         {
             if (poolConfigs.TryGetValue(key, out PoolConfig<TComponent> componentInfo))
             {
                 TComponent component = componentInfo.pool.Count > 0
                     ? componentInfo.pool.Dequeue()
-                    : CreateComponent(componentInfo.componentPrefab, key, null);
+                    : CreateComponent(componentInfo.componentPrefab, key, parent);
 
                 return component;
             }
@@ -180,7 +187,7 @@ public abstract class PoolingSystem<T> : Singleton<T> where T : PoolingSystem<T>
         /// Dequeue a component from the pool by index.
         /// Creates a new one if the pool is empty.
         /// </summary>
-        public Component Dequeue(int index)
+        public Component Dequeue(int index, Transform parent = null)
         {
             SerializeDictionary<string, PoolConfig<TComponent>>.DataType[] data = poolConfigs.GetDataType();
 
@@ -191,7 +198,7 @@ public abstract class PoolingSystem<T> : Singleton<T> where T : PoolingSystem<T>
 
             Component component = componentInfo.pool is not null && componentInfo.pool.Count > 0
                 ? componentInfo.pool.Dequeue()
-                : CreateComponent(componentInfo.componentPrefab, key, null);
+                : CreateComponent(componentInfo.componentPrefab, key, parent);
 
             return component;
         }
