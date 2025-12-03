@@ -1,46 +1,20 @@
-using NUnit.Framework;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolManager : MonoBehaviour
+public class PoolManager : PoolingSystem<PoolManager>
 {
-    public GameObject[] prefabs;
-    List<GameObject>[] pools;
-
-    private void Awake()
+    [SerializeField] private PoolDictionary<Transform> poolPrefabs;
+    
+    protected override void Awake()
     {
-        pools = new List<GameObject>[prefabs.Length];
-        for (int i = 0; i < pools.Length; i++)
-        {
-            pools[i] = new List<GameObject>();
-        }
-
-       
+        base.Awake();
+        
+        PoolCategories[typeof(Transform)] = poolPrefabs;
     }
 
-    public GameObject Get(int Index)
+    public GameObject Get(int index)
     {
-        GameObject select = null;
-
-        foreach (GameObject item in pools[Index])
-        {
-            if (!item.activeSelf)
-            {
-                select = item;
-                select.SetActive(true);
-                break;
-            }
-        }
-
-        if (select == null)
-        {
-            select = Instantiate(prefabs[Index], transform);
-            pools[Index].Add(select);
-        }
-
-        return select;
-
+        Transform poolObject = Instance.Dequeue<Transform>(index);
+        
+        return poolObject.gameObject;
     }
-
-
 }

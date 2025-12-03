@@ -827,6 +827,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e79176c4ab3f3a94f9c531b69f1d384f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pool
+  poolPrefabs:
+    poolConfigs:
+      dicData:
+      - key: Enemy
+        value:
+          initCreateCount: 8
+          componentPrefab: {fileID: 8804410776659850513, guid: a60008b781bca9d4da61b9fe3dc010b2, type: 3}
+      - key: Bullet
+        value:
+          initCreateCount: 8
+          componentPrefab: {fileID: 8001788388448492335, guid: 1a864ddd6c8e05c439f60f63c9c48a66, type: 3}
+      - key: Bullet_1
+        value:
+          initCreateCount: 8
+          componentPrefab: {fileID: 4572601084925933010, guid: deb907a111e30264ba9a792447563262, type: 3}
+      - key: Bullet_2
+        value:
+          initCreateCount: 8
+          componentPrefab: {fileID: 8929374838496666620, guid: 6c9c9292dd4e32f409580ca628b3e52a, type: 3}
+      - key: Bullet_3
+        value:
+          initCreateCount: 8
+          componentPrefab: {fileID: 170789346057268734, guid: 0b7b04fad21e2304590e5229e7283058, type: 3}
+      - key: Bullet_4
+        value:
+          initCreateCount: 8
+          componentPrefab: {fileID: 714313062281698064, guid: c30a032aa3466c4458af6950500c2a51, type: 3}
+      - key: Bullet_5
+        value:
+          initCreateCount: 8
+          componentPrefab: {fileID: 6824846326822132788, guid: e8ea4b7d562324f469c7cec2891e8272, type: 3}
   prefabs:
   - {fileID: 5283640687217760625, guid: a60008b781bca9d4da61b9fe3dc010b2, type: 3}
   - {fileID: 7827888347344473652, guid: 1a864ddd6c8e05c439f60f63c9c48a66, type: 3}
@@ -958,7 +989,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 10.569445
+  orthographic size: 8.652778
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
