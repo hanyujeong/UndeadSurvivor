@@ -17,4 +17,9 @@ public class PoolManager : PoolingSystem<PoolManager>
         
         return poolObject.gameObject;
     }
+    
+    public void Set(GameObject poolObject)
+    {
+        Instance.Enqueue(poolObject.transform);
+    }
 }
