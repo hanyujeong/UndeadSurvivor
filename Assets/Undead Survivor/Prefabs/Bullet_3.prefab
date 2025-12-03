@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 170789346057268734}
   - component: {fileID: 653353054767873696}
-  - component: {fileID: 8551470478779435315}
   - component: {fileID: 6196900717899993088}
   - component: {fileID: -7214539774558353930}
+  - component: {fileID: 8551470478779435315}
   m_Layer: 0
   m_Name: Bullet_3
   m_TagString: Bullet
@@ -93,20 +93,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8551470478779435315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1124544042939664096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acc64a1e7c284fb499b085f5ad693e70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  damage: 0
-  per: 0
 --- !u!70 &6196900717899993088
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -137,7 +123,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -171,3 +157,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8551470478779435315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124544042939664096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acc64a1e7c284fb499b085f5ad693e70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Bullet
+  damage: 0
+  per: 0

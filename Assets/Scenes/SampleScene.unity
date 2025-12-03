@@ -734,7 +734,7 @@ MonoBehaviour:
   scanRange: 7
   targetLayer:
     serializedVersion: 2
-    m_Bits: 96
+    m_Bits: 64
   nearestTarget: {fileID: 0}
 --- !u!1 &427258472
 GameObject:
@@ -958,7 +958,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 10.569445
+  orthographic size: 20.88889
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -5455,10 +5455,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ae39cb91cdbe142a35ccf76d50260f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  id: 1
-  prefabId: 2
-  damage: 3
-  count: 0
+  id: 3
+  prefabId: 4
+  damage: 8
+  count: 1
   speed: 0
 --- !u!1 &581748731
 GameObject:
