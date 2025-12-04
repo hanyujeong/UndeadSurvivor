@@ -51,14 +51,14 @@ public abstract class PoolingSystem<T> : Singleton<T> where T : PoolingSystem<T>
         if (PoolCategories.TryGetValue(typeof(TComponent), out IPoolDictionary poolDictionary))
         {
             TComponent component = poolDictionary.Dequeue(key, parent) as TComponent;
-            if (component) component.gameObject.SetActive(true);
-            
+            if (component) { component.gameObject.SetActive(true); }
+
             return component;
         }
-        
+
         return null;
     }
-    
+
     /// <summary>
     /// Retrieve an component from the pool by index.
     /// </summary>
@@ -71,14 +71,14 @@ public abstract class PoolingSystem<T> : Singleton<T> where T : PoolingSystem<T>
         if (PoolCategories.TryGetValue(typeof(TComponent), out IPoolDictionary poolDictionary))
         {
             TComponent component = poolDictionary.Dequeue(index, parent) as TComponent;
-            if (component) component.gameObject.SetActive(true);
-            
+            if (component) { component.gameObject.SetActive(true); }
+
             return component;
         }
-        
+
         return null;
     }
-    
+
     /// <summary>
     /// Interface for component dictionaries (pools).
     /// Provides basic enqueue/dequeue/init operations.
@@ -102,11 +102,12 @@ public abstract class PoolingSystem<T> : Singleton<T> where T : PoolingSystem<T>
         /// Default parent Transform for pooled objects.
         /// </summary>
         [SerializeField] public Transform defaultPoolParent;
-        
+
         /// <summary>
         /// Dictionary mapping keys to component info (prefab, pool, init count).
         /// </summary>
-        [SerializeField] private SerializeDictionary<string, PoolConfig<TComponent>> poolConfigs =
+        [SerializeField]
+        private SerializeDictionary<string, PoolConfig<TComponent>> poolConfigs =
             new SerializeDictionary<string, PoolConfig<TComponent>>();
 
         /// <summary>
@@ -146,10 +147,10 @@ public abstract class PoolingSystem<T> : Singleton<T> where T : PoolingSystem<T>
         /// </summary>
         private TComponent CreateComponent(TComponent component, string key, Transform parent)
         {
-            TComponent newComponent = Instantiate(component, parent);
+            TComponent newComponent = Instantiate(component, parent, true);
             newComponent.gameObject.SetActive(false);
             newComponent.name = key;
-            
+
             return newComponent;
         }
 
@@ -179,10 +180,10 @@ public abstract class PoolingSystem<T> : Singleton<T> where T : PoolingSystem<T>
 
                 return component;
             }
-            
+
             return null;
         }
-        
+
         /// <summary>
         /// Dequeue a component from the pool by index.
         /// Creates a new one if the pool is empty.
