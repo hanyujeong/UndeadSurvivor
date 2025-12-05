@@ -66,7 +66,7 @@ public class Weapon : MonoBehaviour
 
         for (int index = 0; index < GameManager.instance.pool.GetPoolPrefabsCount(); ++index)
         {
-            if (data.projectile == GameManager.instance.pool.Get(index))
+            if (data.projectile == GameManager.instance.pool.GetPoolPrefabsOrigin(index))
             {
                 prefabId = index;
                 break;

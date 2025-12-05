@@ -27,4 +27,9 @@ public class PoolManager : PoolingSystem<PoolManager>
     {
         return poolPrefabs.poolConfigs.Count;
     }
+
+    public GameObject GetPoolPrefabsOrigin(int index)
+    {
+        return poolPrefabs.poolConfigs.GetDataType()[index].value.componentPrefab.gameObject;
+    }
 }
