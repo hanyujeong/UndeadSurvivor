@@ -14,12 +14,7 @@ public class Weapon : MonoBehaviour
 
     private void Awake()
     {
-        player = GetComponentInParent<Player>();
-    }
-
-    private void Start()
-    {
-        Init();
+        player = GameManager.instance.player;
     }
 
 
@@ -60,8 +55,20 @@ public class Weapon : MonoBehaviour
 
     }
 
-    public void Init()
+    public void Init(ItemData data)
     {
+
+        name = "Weapon " + data.itemId;
+        transform.parent = player.transform;
+        transform.localPosition = Vector3.zero;
+
+        id = data.itemId;
+        damage = data.baseDamage;
+        count = data.baseCount;
+
+        
+
+
         switch (id)
         {
             case 0:
