@@ -22,4 +22,9 @@ public class PoolManager : PoolingSystem<PoolManager>
     {
         Instance.Enqueue(poolObject.transform);
     }
+
+    public int GetPoolPrefabsCount()
+    {
+        return poolPrefabs.poolConfigs.Count;
+    }
 }

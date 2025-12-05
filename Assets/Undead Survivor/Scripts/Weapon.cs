@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -16,7 +15,6 @@ public class Weapon : MonoBehaviour
     {
         player = GameManager.instance.player;
     }
-
 
     void Update()
     {
@@ -66,9 +64,15 @@ public class Weapon : MonoBehaviour
         damage = data.baseDamage;
         count = data.baseCount;
 
+        for (int index = 0; index < GameManager.instance.pool.GetPoolPrefabsCount(); ++index)
+        {
+            if (data.projectile == GameManager.instance.pool.Get(index))
+            {
+                prefabId = index;
+                break;
+            }
+        }
         
-
-
         switch (id)
         {
             case 0:

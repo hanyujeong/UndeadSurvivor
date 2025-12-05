@@ -106,8 +106,7 @@ public abstract class PoolingSystem<T> : Singleton<T> where T : PoolingSystem<T>
         /// <summary>
         /// Dictionary mapping keys to component info (prefab, pool, init count).
         /// </summary>
-        [SerializeField]
-        private SerializeDictionary<string, PoolConfig<TComponent>> poolConfigs =
+        [SerializeField] public SerializeDictionary<string, PoolConfig<TComponent>> poolConfigs =
             new SerializeDictionary<string, PoolConfig<TComponent>>();
 
         /// <summary>
