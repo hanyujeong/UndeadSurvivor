@@ -24,4 +24,29 @@ public class Item : MonoBehaviour
     {
         textLevel.text = "Lv." + (level + 1);
     }
+
+    public void OnClickItem()
+    {
+        switch (data.itemType)
+        {
+            case ItemData.ItemType.Melee:
+                break;
+            case ItemData.ItemType.Range:
+                break;
+            case ItemData.ItemType.Glove:
+                break;
+            case ItemData.ItemType.Shoe:
+                break;
+            case ItemData.ItemType.Heal:
+                break;
+        }
+
+        level++;
+
+        if (level == data.damages.Length)
+        {
+            GetComponent<Button>().interactable = false;
+        }
+
+    }
 }
