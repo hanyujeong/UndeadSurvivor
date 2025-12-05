@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b285e36bf527df7418abb6e270eaecbf, type: 3}
-  m_Name: Item0
+  m_Name: Item2
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemType: 0
-  itemId: 0
-  itemName: "\uC0BD"
+  itemType: 2
+  itemId: 2
+  itemName: "\uD14C\uD06C\uB2C8\uCEEC \uC7A5\uAC11"
   itemDesc: 
-  itemIcon: {fileID: -181907988, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
-  baseDamage: 4.5
-  baseCount: 3
+  itemIcon: {fileID: -201829820, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
+  baseDamage: 0
+  baseCount: 0
   damages:
+  - 0.1
+  - 0.2
+  - 0.35
   - 0.5
-  - 1
-  - 1.5
-  - 2
-  - 3
-  counts: 0100000001000000010000000100000002000000
-  projectile: {fileID: 7827888347344473652, guid: 1a864ddd6c8e05c439f60f63c9c48a66, type: 3}
+  - 0.75
+  counts: 
+  projectile: {fileID: 0}
