@@ -37,9 +37,18 @@ public class Item : MonoBehaviour
                     weapon = newWeapon.AddComponent<Weapon>();
                     weapon.Init(data);
                 }
-                    
+                else
+                {
+                    float nextDamage = data.baseDamage;
+                    int nextCount = 0;
 
-                break;
+                    nextDamage += data.baseDamage * data.damages[level];
+                    nextCount += data.counts[level];
+
+                    weapon.LevelUp(nextDamage, nextCount);
+                }
+
+                    break;
             case ItemData.ItemType.Glove:
                 break;
             case ItemData.ItemType.Shoe:

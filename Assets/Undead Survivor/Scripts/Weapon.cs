@@ -41,7 +41,6 @@ public class Weapon : MonoBehaviour
 
     }
 
-
     public void LevelUp(float damage, int count)
     {
         this.damage += damage;
