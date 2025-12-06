@@ -109,7 +109,7 @@ public class DDamBossEnemy : MonoBehaviour
             isLive = false;
             coll.enabled = false;
             rigid.simulated = false;
-            spriter.sortingOrder = 0;
+            spriter.sortingOrder = 1;
             anim.SetTrigger(DeadHash);
             GameManager.instance.kill++;
             // GameManager.instance.GetExp();
