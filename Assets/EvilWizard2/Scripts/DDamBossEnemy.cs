@@ -9,6 +9,7 @@ public class DDamBossEnemy : MonoBehaviour
     public float speed;
     public float health;
     public float maxHealth;
+    public float damage = 3f;
     public Rigidbody2D target;
     public GameObject speechBubble;
 
@@ -16,6 +17,7 @@ public class DDamBossEnemy : MonoBehaviour
     private float curCloseDistance = 99999;
 
     private bool isRun = false;
+    private bool canAttack = true;
     private bool isLive = true;
     private bool canChangeHitColor = true;
     public Color hitColor = Color.white;
@@ -56,11 +58,12 @@ public class DDamBossEnemy : MonoBehaviour
         isLive = true;
         coll.enabled = true;
         rigid.simulated = true;
-        spriter.sortingOrder = 2;
+        spriter.sortingOrder = 3;
         // anim.SetBool(DeadHash, false);
         health = maxHealth;
         
         isRun = false;
+        canAttack = true;
         canChangeHitColor = true;
         speechBubble.SetActive(false);
         closeDistance *= closeDistance;
@@ -106,7 +109,7 @@ public class DDamBossEnemy : MonoBehaviour
             isLive = false;
             coll.enabled = false;
             rigid.simulated = false;
-            spriter.sortingOrder = 2;
+            spriter.sortingOrder = 0;
             anim.SetTrigger(DeadHash);
             GameManager.instance.kill++;
             // GameManager.instance.GetExp();
@@ -155,9 +158,10 @@ public class DDamBossEnemy : MonoBehaviour
     private void Attack()
     {
         if(isRun) { anim.SetBool(RunHash, false); }
-        
         isRun = false;
-
+        
+        if (!canAttack) { return; }
+        canAttack = false;
         StartCoroutine(DelayAttack(curCloseDistance < closeDistance * 0.5f ? 1 : 0));
     }
     
@@ -174,6 +178,19 @@ public class DDamBossEnemy : MonoBehaviour
                 anim.SetTrigger(Attack2Hash);
                 break;
         }
+
+        StartCoroutine(DelayDamageToPlayer());
+    }
+
+    private IEnumerator DelayDamageToPlayer()
+    {
+        while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.8f) { yield return null; }
+
+        canAttack = true;
+        AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
+        if(!(stateInfo.IsName(Attack1String) || stateInfo.IsName(Attack2String))) { yield break; }
+        
+        GameManager.instance.health -= (int)damage;
     }
     
     private void Dead()

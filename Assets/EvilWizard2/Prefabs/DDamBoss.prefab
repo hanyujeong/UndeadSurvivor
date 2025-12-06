@@ -197,6 +197,7 @@ MonoBehaviour:
   speed: 6
   health: 10000
   maxHealth: 20
+  damage: 1
   target: {fileID: 0}
   speechBubble: {fileID: 7354090649229347054}
   closeDistance: 10
