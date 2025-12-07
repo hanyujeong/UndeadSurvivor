@@ -49,7 +49,7 @@ public class Weapon : MonoBehaviour
         if (id == 0)
 
             Batch();
-
+        player.BroadcastMessage("ApplyGear");
     }
 
     public void Init(ItemData data)
@@ -83,6 +83,7 @@ public class Weapon : MonoBehaviour
                 break;
 
         }
+        player.BroadcastMessage("ApplyGear");
 
     }
 

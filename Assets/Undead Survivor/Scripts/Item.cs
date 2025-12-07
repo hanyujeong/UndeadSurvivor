@@ -6,6 +6,7 @@ public class Item : MonoBehaviour
     public ItemData data;
     public int level;
     public Weapon weapon;
+    public Gear gear;
 
     Image icon;
     Text textLevel;
@@ -25,7 +26,7 @@ public class Item : MonoBehaviour
         textLevel.text = "Lv." + (level + 1);
     }
 
-    public void OnClickItem()
+    public void OnClick()
     {
         switch (data.itemType)
         {
@@ -52,6 +53,17 @@ public class Item : MonoBehaviour
             case ItemData.ItemType.Glove:
                 break;
             case ItemData.ItemType.Shoe:
+                if (level == 0)
+                {
+                    GameObject newGear = new GameObject();
+                    gear = newGear.AddComponent<Gear>();
+                    gear.Init(data);
+                }
+                else
+                {
+                    float nextRate = data.damages[level];
+                    gear.LevelUp(nextRate);
+                }
                 break;
             case ItemData.ItemType.Heal:
                 break;
