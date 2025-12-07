@@ -1407,6 +1407,7 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 7fa6ec42a547f0f42a116e0d3978e8fd, type: 2}
   level: 0
   weapon: {fileID: 0}
+  gear: {fileID: 0}
 --- !u!114 &487308761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1453,7 +1454,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 487308760}
         m_TargetAssemblyTypeName: Item, Assembly-CSharp
-        m_MethodName: OnClickItem
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1778,7 +1779,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 8.126985
+  orthographic size: 7.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -6751,6 +6752,7 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: d43b286f5f5c5b94d8a2fe7076ea78a2, type: 2}
   level: 0
   weapon: {fileID: 0}
+  gear: {fileID: 0}
 --- !u!114 &984794687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6797,7 +6799,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 984794686}
         m_TargetAssemblyTypeName: Item, Assembly-CSharp
-        m_MethodName: OnClickItem
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15976,7 +15978,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1324061506}
         m_TargetAssemblyTypeName: Item, Assembly-CSharp
-        m_MethodName: OnClickItem
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16039,6 +16041,7 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: c58d2a8c02a53904f942e13a016cc4d6, type: 2}
   level: 0
   weapon: {fileID: 0}
+  gear: {fileID: 0}
 --- !u!1 &1326706267
 GameObject:
   m_ObjectHideFlags: 0
@@ -21490,6 +21493,7 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 998f7b27d66d1104fa08914a97375510, type: 2}
   level: 0
   weapon: {fileID: 0}
+  gear: {fileID: 0}
 --- !u!114 &1848790850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21536,7 +21540,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1848790849}
         m_TargetAssemblyTypeName: Item, Assembly-CSharp
-        m_MethodName: OnClickItem
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21743,6 +21747,7 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: a49c9a6fe89628848827b6e26364b58e, type: 2}
   level: 0
   weapon: {fileID: 0}
+  gear: {fileID: 0}
 --- !u!114 &1960143021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21789,7 +21794,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1960143020}
         m_TargetAssemblyTypeName: Item, Assembly-CSharp
-        m_MethodName: OnClickItem
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
