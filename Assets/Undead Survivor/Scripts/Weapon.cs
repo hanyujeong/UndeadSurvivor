@@ -63,7 +63,7 @@ public class Weapon : MonoBehaviour
         damage = data.baseDamage;
         count = data.baseCount;
 
-        for (int index = 0; index < GameManager.instance.pool.GetPoolPrefabsCount(); ++index)
+        for (int index = 0; index < GameManager.instance.pool.GetPoolPrefabsCount(); index++)
         {
             if (data.projectile == GameManager.instance.pool.GetPoolPrefabsOrigin(index))
             {
