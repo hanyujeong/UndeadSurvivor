@@ -1064,8 +1064,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   inputVec: {x: 0, y: 0}
-  Speed: 5
-  scanner: {fileID: 0}
+  speed: 5
+  scanner: {fileID: 373387116}
 --- !u!114 &373387114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16126,7 +16126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   inputVec: {x: 0, y: 0}
-  Speed: 3
+  speed: 0
   scanner: {fileID: 0}
 --- !u!70 &1326706271
 CapsuleCollider2D:
